@@ -2,7 +2,7 @@ package Devel::StackTrace::AsHTML;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use Data::Dumper;
 use Devel::StackTrace;
@@ -145,7 +145,6 @@ sub _build_lexicals {
     my($id, $lexicals) = @_;
     my $ref = "lex-$id";
 
-    warn $ref;
     return '' unless keys %$lexicals;
 
     my $html = qq(<p><a class="toggle" id="toggle-$ref" href="javascript:toggleLexicals('$ref')">Show lexical variables</a></p><table class="lexicals" id="lexicals-$ref">);
