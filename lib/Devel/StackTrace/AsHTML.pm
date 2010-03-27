@@ -2,7 +2,7 @@ package Devel::StackTrace::AsHTML;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use Data::Dumper;
 use Devel::StackTrace;
@@ -101,10 +101,6 @@ HEAD
         );
     }
     $out .= qq{</ol>};
-
-    $out .= qq{<p class="message">Install <a target="_blank" href="http://search.cpan.org/perldoc?Devel::StackTrace::WithLexicals">Devel::StackTrace::WithLexicals</a> to see the lexical variables of each frame.</p>}
-        unless $trace->frame(0)->can('lexicals');
-
     $out .= "</body></html>";
 
     $out;
