@@ -2,12 +2,13 @@ package Devel::StackTrace::AsHTML;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 use Data::Dumper;
 use Devel::StackTrace;
 use Scalar::Util;
 
+no warnings 'qw';
 my %enc = qw( & &amp; > &gt; < &lt; " &quot; ' &#39; );
 
 # NOTE: because we don't know which encoding $str is in, or even if
