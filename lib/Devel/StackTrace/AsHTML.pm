@@ -2,7 +2,7 @@ package Devel::StackTrace::AsHTML;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 use Data::Dumper;
 use Devel::StackTrace;
@@ -35,7 +35,7 @@ sub render {
     my $trace = shift;
     my %opt   = @_;
 
-    my $msg = encode_html($trace->frame(1)->args);
+    my $msg = encode_html($trace->frame(0)->as_string(1));
     my $out = qq{<!doctype html><head><title>Error: ${msg}</title>};
 
     $opt{style} ||= \<<STYLE;
