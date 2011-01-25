@@ -2,7 +2,7 @@ package Devel::StackTrace::AsHTML;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 use Data::Dumper;
 use Devel::StackTrace;
@@ -88,7 +88,6 @@ function toggleLexicals(ref) {
 <h1>Error trace</h1><pre class="message">$msg</pre><ol>
 HEAD
 
-    $trace->next_frame; # ignore the head
     my $i = 0;
     while (my $frame = $trace->next_frame) {
         $i++;
