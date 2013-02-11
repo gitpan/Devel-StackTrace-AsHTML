@@ -2,7 +2,7 @@ package Devel::StackTrace::AsHTML;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 use Data::Dumper;
 use Devel::StackTrace;
@@ -91,10 +91,11 @@ HEAD
     my $i = 0;
     while (my $frame = $trace->next_frame) {
         $i++;
+        my $next_frame = $trace->frame($i); # peek next
         $out .= join(
             '',
             '<li class="frame">',
-            $frame->subroutine ? encode_html("in " . $frame->subroutine) : '',
+            ($next_frame && $next_frame->subroutine) ? encode_html("in " . $next_frame->subroutine) : '',
             ' at ',
             $frame->filename ? encode_html($frame->filename) : '',
             ' line ',
